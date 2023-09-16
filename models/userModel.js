@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Snowflake } = require("@theinternetfolks/snowflake");
+const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema({
     _id: {
@@ -21,6 +22,20 @@ const userSchema = mongoose.Schema({
     },
 
 }, { timestemps: true })
+
+
+
+// hash password...
+userSchema.pre('save', async function (next) {
+    if (!this.isModified) {
+        next()
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt)
+    console.log("this.password", this.password);
+    next();
+})
 
 const User = mongoose.model("User", userSchema);
 

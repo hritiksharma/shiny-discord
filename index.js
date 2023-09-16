@@ -12,7 +12,7 @@ const port = process.env.PORT
 connectDB();
 app.use(express.json())
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Api is running')
 })
 
 app.use("/api/v1/auth", userRouter)
