@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema(
   {
-    _id: {
+    id: {
       type: String,
       required: true,
     },
@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema(
       required: true,
     },
   },
-  { timestemps: true }
+  { timestamps: true }
 );
 
 // hash password...

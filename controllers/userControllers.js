@@ -23,7 +23,7 @@ const register = async (req, res) => {
     }
 
     const data = {
-      _id: Snowflake.generate(),
+      id: Snowflake.generate(),
       name,
       email,
       password,
@@ -72,7 +72,7 @@ const signIn = async (req, res) => {
       throw new Error("all fields are mandatory");
     }
 
-    const token = await generateToken(user._id);
+    const token = await generateToken(user.id);
 
     res.status(200).json({
       success: true,
@@ -97,10 +97,10 @@ const getUserDetail = async (req, res) => {
     ) {
       token = req.headers.authorization.split(" ")[1];
 
-      const { _id } = jwt.verify(token, process.env.SECRET_KEY);
+      const { id } = jwt.verify(token, process.env.SECRET_KEY);
       console.log("decode", _id);
 
-      const user = await User.findOne({ _id }, "-password");
+      const user = await User.findOne({ id }, "-password");
 
       if (!user) {
         res.status(400);
