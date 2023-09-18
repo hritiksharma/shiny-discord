@@ -36,4 +36,25 @@ const createCommunity = async (req, res) => {
   }
 };
 
-module.exports = { createCommunity };
+const getAllCommunities = async (req, res) => {
+  try {
+    const data = await Community.find();
+    if (!data) {
+      res.status(400);
+      throw new Error("Not found");
+    }
+    if (data.length === 0) {
+      res.status(400);
+      throw new Error("No communities are there");
+    }
+
+    res.status(200).json({
+      status: true,
+      totol: data.length,
+      pages: data.length / 5,
+      data: data,
+    });
+  } catch (error) {}
+};
+
+module.exports = { createCommunity, getAllCommunities };
