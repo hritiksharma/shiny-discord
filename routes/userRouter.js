@@ -4,6 +4,7 @@ const {
   signIn,
   getUserDetail,
 } = require("../controllers/userControllers");
+const { protect } = require("../middlewares/authMiddlewares");
 const router = express.Router();
 
 router.post("/signup", register);
