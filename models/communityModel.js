@@ -5,7 +5,7 @@ mongoose.plugin(slug);
 
 const communitySchema = mongoose.Schema(
   {
-    id: {
+    _id: {
       type: String,
       required: true,
       unique: true,
@@ -17,7 +17,6 @@ const communitySchema = mongoose.Schema(
     slug: {
       type: String,
       slug: "name",
-      required: true,
     },
     owner: {
       type: mongoose.Schema.Types.String,

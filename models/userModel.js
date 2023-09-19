@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema(
   {
-    id: {
+    _id: {
       type: String,
       required: true,
     },

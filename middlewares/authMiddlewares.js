@@ -10,7 +10,7 @@ const protect = async (req, res, next) => {
     try {
       token = req.headers.authorization.split(" ")[1];
       const decoded = await jwt.verify(token, process.env.SECRET_KEY);
-      req.user = await User.findOne({ id: decoded.id }).select("-password");
+      req.user = await User.findOne({ _id: decoded._id }).select("-password");
       next();
     } catch (error) {
       console.log("error", error);

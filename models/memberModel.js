@@ -6,7 +6,7 @@ const Role = require("../models/roleModel");
 
 const memberSchema = mongoose.Schema(
   {
-    id: {
+    _id: {
       type: String,
       required: true,
     },
@@ -26,7 +26,7 @@ const memberSchema = mongoose.Schema(
       required: true,
     },
   },
-  { timestaps: true }
+  { timestamps: true }
 );
 
 const Member = mongoose.model("Member", memberSchema);

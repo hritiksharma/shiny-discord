@@ -12,7 +12,7 @@ const createMember = async (req, res) => {
     }
 
     const data = {
-      id: Snowflake.generate(),
+      _id: Snowflake.generate(),
       community,
       user,
       role,

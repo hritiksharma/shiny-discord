@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Snowflake } = require("@theinternetfolks/snowflake");
 const roleSchema = mongoose.Schema(
   {
-    id: {
+    _id: {
       type: String,
       required: true,
     },
